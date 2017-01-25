@@ -1,10 +1,11 @@
 
 #include <iostream>
+#include <vector>
 #define XX 25
 #define YY 25
 using namespace std;
 
-oid gameOfLife(vector<vector<int>>& board);
+void gameOfLife(vector<vector<int>>& board);
 
 int main() {
     cout << "Game of Life!\n";
@@ -44,11 +45,11 @@ void gameOfLife(vector<vector<int>>& board) {
                 }
               
                 // Death
-                if ((board[x][y] == 2 || board[x][y] == 3) && (count < 2 || count > 3)) board[i][j] = 2;
+                if ((board[i][j] == 2 || board[i][j] == 3) && (count < 2 || count > 3)) board[i][j] = 2;
                 // Birth
-                else if ((board[x][y] == 0 || board[x][y] == 1) && count == 3) board[i][j] = 1;
+                else if ((board[i][j] == 0 || board[i][j] == 1) && count == 3) board[i][j] = 1;
                 // Stay -- right shift 1 bit
-                else board[x][y] /= 2;
+                else board[i][j] /= 2;
            }
      }
        
