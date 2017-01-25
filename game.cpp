@@ -1,8 +1,20 @@
+
 #include <iostream>
+#define XX 25
+#define YY 25
 using namespace std;
+
+oid gameOfLife(vector<vector<int>>& board);
 
 int main() {
     cout << "Game of Life!\n";
+    vector<vector<int>> board(XX, vector<int>(YY,0));
+    
+    board[11][10]=1; board[12][11]=1; board[10][12]=1; board[11][12]=1; board[12][12]=1;
+    
+    while (true) {
+        gameOfLife(board);
+    }
 }
 
 void gameOfLife(vector<vector<int>>& board) {
@@ -13,6 +25,7 @@ void gameOfLife(vector<vector<int>>& board) {
     int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1};
     
     // 0: dead; 1: live
+    // bit1 is current generation; bit0 is next generation
     // 00(0): dead -> dead (Stay)
     // 01(1): dead -> live (Birth)
     // 10(2): live -> dead (Death: under-populate + over-populate)
@@ -21,20 +34,31 @@ void gameOfLife(vector<vector<int>>& board) {
     for (int i = 0; i < m; i++) {
           for (int j = 0; j < n; j++) {
                 int count = 0;
+              
+                // determine # of live neighbours
                 for (int k = 0; k < 8; k++) {
                     int x = i + dx[k], y = j + dy[k];
-                    if (x >= 0 && x < m && y >= 0 && y < n && (board[x][y] == 1 || board[x][y] == 3)) {
+                    if (x >= 0 && x < m && y >= 0 && y < n && (board[x][y] == 2 || board[x][y] == 3)) {
                         count++;
                     }
                 }
-                if ((board[x][y] == 1 || board[x][y] == 3) && (count < 2 || count > 3)) board[i][j] = 2;
-                else if ((board[x][y] == 0 || board[x][y] == 2) && count == 3) board[i][j] = 1;
+              
+                // Death
+                if ((board[x][y] == 2 || board[x][y] == 3) && (count < 2 || count > 3)) board[i][j] = 2;
+                // Birth
+                else if ((board[x][y] == 0 || board[x][y] == 1) && count == 3) board[i][j] = 1;
+                // Stay -- right shift 1 bit
+                else board[x][y] /= 2;
            }
      }
-        
+       
+     // output result and then move next generation(bit0) to current generation(bit1), preparing for the next iteration 
      for (int i = 0; i < m; i++) {
            for (int j = 0; j < n; j++) {
-                board[i][j] %= 2;
+                int temp = board[i][j] % 2;
+                cout << temp;
+                board[i][j] = temp *2;
            }
+           cout << endl;
      }
 }
