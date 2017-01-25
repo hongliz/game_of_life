@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #define XX 25
@@ -13,7 +12,9 @@ int main() {
     
     board[11][10]=1; board[12][11]=1; board[10][12]=1; board[11][12]=1; board[12][12]=1;
     
-    while (true) {
+    char ch;
+    while ((ch = getch()) != 'q')
+    {
         gameOfLife(board);
     }
 }
