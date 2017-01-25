@@ -13,7 +13,7 @@ int main() {
     board[11][10]=1; board[12][11]=1; board[10][12]=1; board[11][12]=1; board[12][12]=1;
     
     char ch;
-    while ((ch = getch()) != 'q')
+    while ((ch = getchar()) != 'q')
     {
         gameOfLife(board);
     }
