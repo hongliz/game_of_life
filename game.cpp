@@ -23,6 +23,9 @@ void gameOfLife(vector<vector<int>>& board) {
     int m = board.size();
     int n = m ? board[0].size() : 0;
     
+    cout << "M=" << m << endl;
+    cout << "N=" << n << endl;
+    
     int dx[] = {-1, -1, -1, 0, 0, 1, 1, 1};
     int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1};
     
