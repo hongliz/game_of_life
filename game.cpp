@@ -1,4 +1,4 @@
-// For on-site interview on January 27, 2017.
+// For on-site interview on January 27, 2017 (Friday).
 
 #include <iostream>
 #include <vector>
