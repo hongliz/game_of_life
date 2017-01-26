@@ -10,7 +10,7 @@ int main() {
     cout << "Game of Life!\n";
     vector<vector<int>> board(XX, vector<int>(YY,0));
     
-    board[10][11]=1; board[11][12]=1; board[12][10]=1; board[12][11]=1; board[12][12]=1;
+    board[10][11]=2; board[11][12]=2; board[12][10]=2; board[12][11]=2; board[12][12]=2;
     
     char ch;
     while ((ch = getchar()) != 'q')
