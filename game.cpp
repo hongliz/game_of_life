@@ -16,7 +16,7 @@ int main() {
     // while ((ch = getchar()) != 'q')
     //    gameOfLife(board);
     
-    int cnt = 5;
+    int cnt = 30;
 
     while (cnt!=0)
     {
