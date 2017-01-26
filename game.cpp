@@ -12,11 +12,18 @@ int main() {
     
     board[10][11]=2; board[11][12]=2; board[12][10]=2; board[12][11]=2; board[12][12]=2;
     
-    char ch;
-    while ((ch = getchar()) != 'q')
+    // char ch;
+    // while ((ch = getchar()) != 'q')
+    //    gameOfLife(board);
+    
+    int cnt = 5;
+
+    while (cnt!=0)
     {
         gameOfLife(board);
+        cnt--;
     }
+    
 }
 
 void gameOfLife(vector<vector<int>>& board) {
