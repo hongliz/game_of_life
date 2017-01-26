@@ -1,3 +1,5 @@
+// For on-site interview on January 27, 2017.
+
 #include <iostream>
 #include <vector>
 #define XX 25
