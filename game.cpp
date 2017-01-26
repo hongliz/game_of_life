@@ -10,7 +10,7 @@ int main() {
     cout << "Game of Life!\n";
     vector<vector<int>> board(XX, vector<int>(YY,0));
     
-    board[10][11]=2; board[11][12]=2; board[12][10]=2; board[12][11]=2; board[12][12]=2;
+    board[0][1]=2; board[1][2]=2; board[2][0]=2; board[2][1]=2; board[2][2]=2;
     
     // char ch;
     // while ((ch = getchar()) != 'q')
@@ -59,8 +59,9 @@ void gameOfLife(vector<vector<int>>& board) {
                 if ((board[i][j] == 2 || board[i][j] == 3) && (count < 2 || count > 3)) board[i][j] = 2;
                 // Birth
                 else if ((board[i][j] == 0 || board[i][j] == 1) && count == 3) board[i][j] = 1;
-                // Stay -- right shift 1 bit
-                else board[i][j] /= 2;
+                // Stay -- replicate bit1 to bit0
+                else if (board[i][j]==1) board[i][j]=0;
+                else if (board[i][j]==2) board[i][j]=3;
            }
      }
        
@@ -69,6 +70,7 @@ void gameOfLife(vector<vector<int>>& board) {
            for (int j = 0; j < n; j++) {
                 int temp = board[i][j] % 2;
                 cout << temp;
+                // left shift 1 bit, preparing for the next iteration
                 board[i][j] = temp *2;
            }
            cout << endl;
