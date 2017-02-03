@@ -1,5 +1,4 @@
-// For on-site interview on January 27, 2017 (Friday).
-
+// Game of Life C++ implementation
 #include <iostream>
 #include <vector>
 #define XX 25
